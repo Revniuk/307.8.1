@@ -1,0 +1,42 @@
+// Constants
+const totalDistance = 1500; // miles
+const fuelBudget = 175; // dollars
+const fuelCostPerGallon = 3; // dollars
+const speeds = [55, 60, 75]; // miles per hour
+const efficiencies = [30, 28, 23]; // miles per gallon
+
+// Function to calculate fuel needed
+function calculateFuelNeeded(speed, efficiency) {
+    return totalDistance / efficiency;
+}
+
+// Function to calculate trip duration
+function calculateTripDuration(speed) {
+    return totalDistance / speed;
+}
+
+// Function to check if budget is enough
+function isBudgetEnough(fuelNeeded) {
+    return fuelBudget >= fuelNeeded * fuelCostPerGallon;
+}
+
+// Perform calculations for each speed
+for (let i = 0; i < speeds.length; i++) {
+    const speed = speeds[i];
+    const efficiency = efficiencies[i];
+
+    // Calculate fuel needed
+    const fuelNeeded = calculateFuelNeeded(speed, efficiency);
+
+    // Check if budget is enough
+    const budgetEnough = isBudgetEnough(fuelNeeded);
+
+    // Calculate trip duration
+    const tripDuration = calculateTripDuration(speed);
+
+    // Log results
+    console.log(`Results for speed ${speed} mph:`);
+    console.log(`- Fuel needed: ${fuelNeeded.toFixed(2)} gallons`);
+    console.log(`- Budget enough: ${budgetEnough ? 'Yes' : 'No'}`);
+    console.log(`- Trip duration: ${tripDuration.toFixed(2)} hours\n`);
+}
